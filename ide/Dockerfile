@@ -23,6 +23,8 @@ RUN git clone https://github.com/c9/core.git /home/docker/cloud9 \
     && ./scripts/install-sdk.sh
 
 RUN echo 'alias python=python3' >> ~/.bashrc
+RUN python3 -m pip install --upgrade pip
+RUN pip3 install asyncua
 
 USER root
 RUN mkdir -p /workspace

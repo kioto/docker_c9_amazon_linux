@@ -11,5 +11,6 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
     ports:
-      - "8080:8080"
+      - 8080:8080
+      - 4840:4840
     command: node /home/docker/cloud9/server.js --port 8080 -w /workspace -l 0.0.0.0 --auth docker:tcuser
