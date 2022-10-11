@@ -21,10 +21,6 @@ RUN yum install -y \
     java-17-amazon-corretto-devel \
     java-17-amazon-corretto-jmods
 
-RUN cd /tmp && \
-    curl -s https://d2s8p88vqu9w66.cloudfront.net/releases/greengrass-nucleus-latest.zip > greengrass-nucleus-latest.zip && unzip greengrass-nucleus-latest.zip -d GreengrassCore && \
-    java -Droot="/greengrass/v2" -Dlog.store=FILE -jar ./GreengrassCore/lib/Greengrass.jar --aws-region ap-northeast-1 --thing-name gg-device-001 --thing-group-name gg-group --component-default-user ggc_user:ggc_group --provision true --setup-system-service true --deploy-dev-tools true
-
 # create docker user
 RUN useradd -d /home/docker -m -s /bin/bash -u 1000 -g 50 -p $(perl -e 'print crypt("tcuser", "\$6\$salt03")') docker && \
     usermod --append -G wheel docker && \
